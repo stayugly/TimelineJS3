@@ -193,6 +193,7 @@ TL.Slide = TL.Class.extend({
 		}
 		this._el.scroll_container 		= TL.Dom.create("div", "tl-slide-scrollable-container", this._el.container);
 		this._el.content_container		= TL.Dom.create("div", "tl-slide-content-container", this._el.scroll_container);
+        this._el.wagoConent                = TL.Dom.create("div", "wago-slide-content", this._el.container);
 		this._el.content				= TL.Dom.create("div", "tl-slide-content", this._el.content_container);
 		this._el.background				= TL.Dom.create("div", "tl-slide-background", this._el.container);
 		// Style Slide Background
@@ -270,6 +271,10 @@ TL.Slide = TL.Class.extend({
 			TL.DomUtil.addClass(this._el.container, 'tl-slide-text-only');
 			this._text.addTo(this._el.content);
 		}
+
+        if (this.has.text) {
+            this._el.wagoConent.innerHTML = this._text.data.text.trim();
+        }
 
 		// Fire event that the slide is loaded
 		this.onLoaded();
